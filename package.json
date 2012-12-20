@@ -1,0 +1,37 @@
+{
+  "author": {
+    "name": "devo.ps",
+    "email": "info@devo.ps",
+    "url": "https://github.com/devo-ps"
+  },
+  "name": "carcass-auth",
+  "description": "Authentication middlewares, in Carcass style.",
+  "version": "0.0.1",
+  "contributors": [],
+  "keywords": [
+    "carcass",
+    "auth"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devo-ps/carcass-auth.git"
+  },
+  "url": "",
+  "dependencies": {
+    "carcass": "~0.1.0",
+    "debug": "~0.7.0",
+    "express": "~3.0.5",
+    "passport": "~0.1.15",
+    "underscore": "~1.4.3"
+  },
+  "devDependencies": {
+    "connect-redis": "1.x",
+    "mocha": "1.x",
+    "passport-local": "~0.1.6",
+    "request": "2.x",
+    "should": "1.x"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test/*.mocha.js"
+  }
+}
