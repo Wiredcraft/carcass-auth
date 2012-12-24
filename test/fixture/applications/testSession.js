@@ -1,6 +1,10 @@
+var debug = require('debug')('carcass-auth:test:Application:TestSession');
+
 var carcass = require('carcass');
 
 module.exports = carcass.factories.Express(function(app, options) {
+    debug('initializing');
+
     app.use(function(req, res, next) {
         if (!req.session) {
             next(new Error('no session'));

@@ -1,4 +1,4 @@
-var debug = require('debug')('carcass:auth:app:session');
+var debug = require('debug')('carcass-auth:Application:Session');
 
 var carcass = require('carcass');
 var express = require('express');
@@ -8,6 +8,8 @@ var express = require('express');
 // Requires cookieParser.
 // @see http://www.senchalabs.org/connect/session.html
 module.exports = carcass.factories.Express(function(app, options) {
+    debug('initializing');
+
     options = options || {};
 
     // TODO: fingerprint?
