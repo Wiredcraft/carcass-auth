@@ -7,7 +7,12 @@ var express = require('express');
 // -------
 // Requires cookieParser.
 // @see http://www.senchalabs.org/connect/session.html
-module.exports = carcass.factories.Express(function(app, options) {
+module.exports = carcass.factories.Express({
+    title: 'Session',
+    initialize: initialize
+});
+
+function initialize(app, options) {
     debug('initializing');
 
     options = options || {};
@@ -27,4 +32,4 @@ module.exports = carcass.factories.Express(function(app, options) {
     });
 
     app.use(session);
-});
+};

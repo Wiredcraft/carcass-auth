@@ -9,7 +9,12 @@ var carcass = require('carcass');
 // Enables session support.
 // Requires Express session middleware.
 // Requires passport.serializeUser() and passport.deserializeUser().
-module.exports = carcass.factories.Express(function(app, options) {
+module.exports = carcass.factories.Express({
+    title: 'Restify',
+    initialize: initialize
+});
+
+function initialize(app, options) {
     debug('initializing');
 
     options = options || {};
@@ -17,4 +22,4 @@ module.exports = carcass.factories.Express(function(app, options) {
     var passport = options.passport || carcass.instances.passport;
 
     app.use(passport.session());
-});
+};

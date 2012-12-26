@@ -5,7 +5,12 @@ var carcass = require('carcass');
 // Passport
 // ---
 // @see http://passportjs.org
-module.exports = carcass.factories.Express(function(app, options) {
+module.exports = carcass.factories.Express({
+    title: 'Restify',
+    initialize: initialize
+});
+
+function initialize(app, options) {
     debug('initializing');
 
     options = options || {};
@@ -13,4 +18,4 @@ module.exports = carcass.factories.Express(function(app, options) {
     var passport = options.passport || carcass.instances.passport;
 
     app.use(passport.initialize());
-});
+};
