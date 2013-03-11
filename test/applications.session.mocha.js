@@ -7,7 +7,7 @@ require('./fixture');
 var server = new carcass.servers.Http();
 
 // Requires a local redis server.
-var express = require('express');
+var express = carcass.express;
 var RedisStore = require('connect-redis')(express);
 
 // Test URLs.

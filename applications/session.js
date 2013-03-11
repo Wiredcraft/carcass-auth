@@ -1,7 +1,7 @@
 var debug = require('debug')('carcass-auth:Application:Session');
 
 var carcass = require('carcass');
-var express = require('express');
+var express = carcass.express;
 
 // Session
 // -------

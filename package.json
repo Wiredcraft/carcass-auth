@@ -18,10 +18,9 @@
   },
   "url": "",
   "dependencies": {
-    "debug": "~0.7.0",
-    "express": "~3.0.5",
+    "debug": "~0.7.2",
     "passport": "~0.1.15",
-    "underscore": "~1.4.3"
+    "underscore": "~1.4.4"
   },
   "devDependencies": {
     "connect-redis": "1.x",
