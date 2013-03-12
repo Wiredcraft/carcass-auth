@@ -2,7 +2,7 @@ var carcass = require('carcass');
 var request = require('request');
 var should = require('should');
 
-require('./fixture');
+require('./fixture/login_local');
 
 var server = new carcass.servers.Http();
 
