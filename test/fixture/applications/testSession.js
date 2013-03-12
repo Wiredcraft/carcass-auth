@@ -7,16 +7,16 @@ module.exports = carcass.factories.Express(function(app, options) {
 
     app.use(function(req, res, next) {
         if (!req.session) {
-            next(new Error('no session'));
+            next(carcass.httpError(new Error('no session')));
         } else {
             next();
         }
     });
     app.get('/', function(req, res, next) {
-        res.json(req.session || false, 200);
+        res.send(req.session || false);
     });
     app.get('/id', function(req, res, next) {
-        res.json(req.sessionID || false, 200);
+        res.send(req.sessionID || false);
     });
     app.get('/destroy', function(req, res, next) {
         req.session.destroy(function(err) {
@@ -24,9 +24,9 @@ module.exports = carcass.factories.Express(function(app, options) {
                 return next(err);
             }
             if (req.session) {
-                return next(new Error('failed to destroy'));
+                return next(carcass.httpError(new Error('failed to destroy')));
             }
-            res.json(true, 200);
+            res.send(true);
         });
     });
 });

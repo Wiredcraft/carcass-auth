@@ -12,7 +12,7 @@ module.exports = carcass.factories.Express(function(app, options) {
     app.use(function(req, res, next) {
         // Just a demo.
         if (!req.session) {
-            next(new Error('no session'));
+            next(carcass.httpError(new Error('no session')));
         } else {
             next();
         }
@@ -36,13 +36,13 @@ module.exports = carcass.factories.Express(function(app, options) {
                 }
                 // Just a demo.
                 if (!req.session) {
-                    return next(new Error('failed to login'));
+                    return next(carcass.httpError(new Error('failed to login')));
                 }
-                res.json(req.session, 200);
+                res.send(req.session);
             });
         } else {
             // TODO: shouldn't happen, but a better message.
-            next(new Error());
+            next(carcass.httpError(new Error()));
         }
     });
 
@@ -56,9 +56,9 @@ module.exports = carcass.factories.Express(function(app, options) {
             }
             // Just a demo.
             if (req.session) {
-                return next(new Error('failed to logout'));
+                return next(carcass.httpError(new Error('failed to logout')));
             }
-            res.json(true, 200);
+            res.send(true);
         });
     });
 });
