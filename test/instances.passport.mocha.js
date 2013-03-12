@@ -1,7 +1,7 @@
 var carcass = require('carcass');
 var should = require('should');
 
-require('carcass-auth');
+require('../');
 
 describe('The global passport instance', function() {
     var passport = carcass.instances.passport;
