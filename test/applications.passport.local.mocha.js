@@ -6,7 +6,7 @@ var server = require('./login_local');
 
 // Test URLs.
 var url_root = 'http://127.0.0.1:3000';
-var url_session = url_root + '/test/session';
+var url_session = url_root + '/test/session/local';
 var url_session_id = url_session + '/id';
 var url_session_destroy = url_session + '/destroy';
 var url_local = url_root + '/test/passport/local';

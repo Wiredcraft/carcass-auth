@@ -13,7 +13,7 @@ var url_session_destroy = url_session + '/destroy';
 var sessionID;
 
 describe('Session', function() {
-    
+
     before(function(done) {
         server.start(done);
     });
