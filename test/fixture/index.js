@@ -1,6 +1,6 @@
 var carcass = require('carcass');
 
-require('../..');
+require('../../');
 
 // Register applications.
 carcass.register(__dirname, 'applications');
