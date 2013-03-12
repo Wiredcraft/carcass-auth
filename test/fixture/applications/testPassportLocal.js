@@ -38,7 +38,7 @@ module.exports = carcass.factories.Express(function(app, options) {
                 if (!req.session) {
                     return next(carcass.httpError(new Error('failed to login')));
                 }
-                res.send(req.user);
+                res.send(req.session);
             });
         } else {
             // TODO: shouldn't happen, but a better message.
