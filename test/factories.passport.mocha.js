@@ -2,7 +2,7 @@ var carcass = require('carcass');
 var should = require('should');
 var _ = require('underscore');
 
-require('carcass-auth');
+require('../');
 
 describe('The Passport factory', function() {
     var Passport = carcass.factories.Passport;
