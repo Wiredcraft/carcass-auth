@@ -2,13 +2,7 @@ var carcass = require('carcass');
 var request = require('request');
 var should = require('should');
 
-require('./login_local');
-
-var server = new carcass.servers.Http();
-
-// Requires a local redis server.
-var express = carcass.express;
-var RedisStore = require('connect-redis')(express);
+var server = require('./login_local');
 
 // Requires passport-local module (npm install passport-local).
 var LocalStrategy = require('passport-local').Strategy;
@@ -59,12 +53,6 @@ describe('Passport with the Local strategy', function() {
             });
         }));
 
-        server.mount('restify');
-        server.mount('session', {
-            store: new RedisStore({
-                prefix: 'carcass-auth-test:'
-            })
-        });
         server.mount('passport', {
             passport: passport
         });

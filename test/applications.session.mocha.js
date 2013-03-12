@@ -2,13 +2,7 @@ var carcass = require('carcass');
 var request = require('request');
 var should = require('should');
 
-require('./login_session');
-
-var server = new carcass.servers.Http();
-
-// Requires a local redis server.
-var express = carcass.express;
-var RedisStore = require('connect-redis')(express);
+var server = require('./login_session');
 
 // Test URLs.
 var url_root = 'http://127.0.0.1:3000';
@@ -19,14 +13,8 @@ var url_session_destroy = url_session + '/destroy';
 var sessionID;
 
 describe('Session', function() {
+    
     before(function(done) {
-        server.mount('restify');
-        server.mount('session', {
-            store: new RedisStore({
-                prefix: 'carcass-auth-test:'
-            })
-        });
-        server.mount('testSession', '/test/session');
         server.start(done);
     });
 
