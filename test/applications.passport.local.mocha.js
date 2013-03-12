@@ -4,9 +4,6 @@ var should = require('should');
 
 var server = require('./login_local');
 
-// Requires passport-local module (npm install passport-local).
-var LocalStrategy = require('passport-local').Strategy;
-
 // Test URLs.
 var url_root = 'http://127.0.0.1:3000';
 var url_session = url_root + '/test/session';
@@ -21,48 +18,6 @@ var sessionID;
 describe('Passport with the Local strategy', function() {
 
     before(function(done) {
-        // Passport; a new instance.
-        // To use the global instance:
-        // var passport = carcass.instances.passport;
-        var passport = carcass.factories.Passport();
-
-        // Passport session setup.
-        // The callback will be invoked by req.logIn(), to serialize a user and
-        // save in the session.
-        // Here you need to make sure it is or becomes a JSON.
-        passport.serializeUser(function(user, done) {
-            done(null, user);
-        });
-        // The callback will be invoked by the session strategy, to get a user
-        // from the session.
-        // Here you can convert it back to a model.
-        passport.deserializeUser(function(obj, done) {
-            done(null, obj);
-        });
-
-        // Use a local strategy.
-        passport.use('local', new LocalStrategy({
-            usernameField: 'username',
-            passwordField: 'password',
-            passReqToCallback: false
-        }, function(username, password, done) {
-            // TODO: verify user and pass.
-            done(null, {
-                username: 'root',
-                email: 'root@example.com'
-            });
-        }));
-
-        server.mount('passport', {
-            passport: passport
-        });
-        server.mount('passportSession', {
-            passport: passport
-        });
-        server.mount('testSession', '/test/session');
-        server.mount('testPassportLocal', '/test/passport/local', {
-            passport: passport
-        });
         server.start(done);
     });
 
