@@ -12,7 +12,8 @@ module.exports = carcass.factories.Express(function(app, options) {
     app.use(function(req, res, next) {
         // Just a demo.
         if (!req.session) {
-            next(carcass.httpError(new Error('no session')));
+            // status code 454 for session not found
+            next(carcass.httpError(500, 'no session'));
         } else {
             next();
         }
@@ -36,13 +37,13 @@ module.exports = carcass.factories.Express(function(app, options) {
                 }
                 // Just a demo.
                 if (!req.session) {
-                    return next(carcass.httpError(new Error('failed to login')));
+                    return next(carcass.httpError(500, 'session not found'));
                 }
-                res.send(req.session);
+                res.json(200, req.session);
             });
         } else {
             // TODO: shouldn't happen, but a better message.
-            next(carcass.httpError(new Error()));
+            next(carcass.httpError(500, 'user not found'));
         }
     });
 
@@ -56,9 +57,10 @@ module.exports = carcass.factories.Express(function(app, options) {
             }
             // Just a demo.
             if (req.session) {
-                return next(carcass.httpError(new Error('failed to logout')));
+                // 500 for internal server error
+                return next(carcass.httpError(500, 'failed to logout'));
             }
-            res.send(true);
+            res.json(200, true);
         });
     });
 });
