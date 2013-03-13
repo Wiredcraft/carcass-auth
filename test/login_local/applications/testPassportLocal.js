@@ -12,7 +12,6 @@ module.exports = carcass.factories.Express(function(app, options) {
     app.use(function(req, res, next) {
         // Just a demo.
         if (!req.session) {
-            // status code 454 for session not found
             next(carcass.httpError(500, 'no session'));
         } else {
             next();
