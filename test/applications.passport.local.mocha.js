@@ -87,17 +87,17 @@ describe('Passport with the Local strategy', function() {
                     username: 'root',
                     password: 'test'
                 }
-            }, function(err, res, session) {
+            }, function(err, res, body) {
                 should.not.exist(err);
                 res.should.be.a('object');
                 res.should.have.property('statusCode', 200);
-                session.should.be.a('object');
-                session.should.have.property('cookie');
-                session.should.have.property('passport');
-                session.passport.should.have.property('user');
-                session.passport.user.should.have.property('username');
-                session.passport.user.should.have.property('email');
-                session.passport.user.should.have.property('password');
+                body.should.be.a('object');
+                body.should.have.property('cookie');
+                body.should.have.property('passport');
+                body.passport.should.have.property('user');
+                body.passport.user.should.have.property('username');
+                body.passport.user.should.have.property('email');
+                body.passport.user.should.have.property('password');
                 setTimeout(done, 1);
             });
         });
