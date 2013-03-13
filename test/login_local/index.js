@@ -1,4 +1,5 @@
 var carcass = require('carcass');
+var passwordHash = require('password-hash');
 
 require('../../');
 
@@ -7,6 +8,10 @@ var users = [
   , { id: 2, username: 'joe', password: 'birthday', email: 'joe@example.com' }
   , { id: 3, username: 'root', password: 'test', email: 'root@example.com' }
 ];
+
+for(var i = 0; i<users.length; i++) {
+    users[i].password = passwordHash.generate(users[i].password);
+};
 
 function findByUsername(username, fn) {
     for (var i = 0, len = users.length; i < len; i++) {
@@ -56,7 +61,7 @@ passport.use('local', new LocalStrategy({
     findByUsername(username, function(err, user) {
         if (err) { return done(err); }
         if (!user) { return done(null, false, {message: 'Unknow user ' + user.name }); }
-        if (user.password != password) {
+        if (!passwordHash.verify(password, user.password)) {   
             return done(null, false, { message: 'Invalid password' });
         }
         return done(null, user);
