@@ -97,7 +97,7 @@ describe('Passport with the Local strategy', function() {
                 body.passport.should.have.property('user');
                 body.passport.user.should.have.property('username');
                 body.passport.user.should.have.property('email');
-                body.passport.user.should.not.have.property('password');
+                body.passport.user.should.have.property('password');
                 setTimeout(done, 1);
             });
         });

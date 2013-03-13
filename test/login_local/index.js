@@ -1,6 +1,18 @@
 var carcass = require('carcass');
+var passwordHash = require('password-hash');
 
 require('../../');
+
+var user = { id: 1, username: 'root', password: 'test', email: 'root@example.com' };
+
+user.password = passwordHash.generate(user.password);
+
+function findByUsername(username, fn) {
+    if (user.username === username) {
+        return fn(null, user);
+    }
+    return fn(null, null);
+}
 
 // Setup session.
 var server = require('../login_session');
@@ -36,10 +48,14 @@ passport.use('local', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: false
 }, function(username, password, done) {
-    // TODO: verify user and pass.
-    done(null, {
-        username: 'root',
-        email: 'root@example.com'
+    // Verify user and pass.
+    findByUsername(username, function(err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false, {message: 'Unknow user ' + user.name }); }
+        if (!passwordHash.verify(password, user.password)) {   
+            return done(null, false, { message: 'Invalid password' });
+        }
+        return done(null, user);
     });
 }));
 

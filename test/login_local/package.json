@@ -1,5 +1,7 @@
 {
   "name": "carcass-auth-fixture",
   "version": "0.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "password-hash" : "*"
+  }
 }

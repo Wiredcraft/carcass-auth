@@ -41,7 +41,7 @@ module.exports = carcass.factories.Express(function(app, options) {
                 res.json(200, req.session);
             });
         } else {
-            // TODO: shouldn't happen, but a better message.
+            // Shouldn't happen, but a better message.
             next(carcass.httpError(500, 'user not found'));
         }
     });
