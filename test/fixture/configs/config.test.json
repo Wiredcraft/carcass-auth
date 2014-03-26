@@ -1,0 +1,11 @@
+{
+    "session": {
+        "key": "sid",
+        "secret": "lorem",
+        "redis": {}
+    },
+    "http": {
+        "port": 3210,
+        "dev": true
+    }
+}
