@@ -1,35 +1,49 @@
 {
+  "name": "carcass-auth",
+  "version": "0.0.3",
+  "description": "(Node.js) Authentication middlewares, in Carcass style.",
   "author": {
     "name": "devo.ps",
     "email": "info@devo.ps",
     "url": "https://github.com/devo-ps"
   },
-  "name": "carcass-auth",
-  "description": "Authentication middlewares, in Carcass style.",
-  "version": "0.0.3",
   "contributors": [],
   "keywords": [
     "carcass",
     "auth"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/devo-ps/carcass-auth.git"
   },
-  "url": "",
+  "bugs": {
+    "url": "https://github.com/devo-ps/carcass-auth/issues"
+  },
+  "homepage": "https://github.com/devo-ps/carcass-auth",
   "dependencies": {
-    "debug": "~0.7.2",
-    "passport": "~0.1.15",
-    "underscore": "~1.4.4"
+    "carcass": "~0.10.1",
+    "cookie-signature": "~1.0.3",
+    "debug": "0.x"
   },
   "devDependencies": {
-    "connect-redis": "1.x",
-    "mocha": "1.x",
-    "passport-local": "~0.1.6",
-    "request": "2.x",
-    "should": "1.x"
+    "carcass-config": "latest",
+    "carcass-monitor": "latest",
+    "carcass-program": "latest",
+    "connect": "latest",
+    "connect-redis": "latest",
+    "cookie-parser": "latest",
+    "express": "latest",
+    "express-session": "latest",
+    "gulp": "latest",
+    "gulp-coffee": "latest",
+    "gulp-coffeelint": "latest",
+    "gulp-jshint": "latest",
+    "gulp-mocha": "latest",
+    "gulp-util": "latest",
+    "jshint-stylish": "latest",
+    "should": "latest",
+    "supertest": "latest"
   },
-  "scripts": {
-    "test": "./node_modules/.bin/mocha ./test/*.mocha.js"
-  }
+  "scripts": {}
 }
