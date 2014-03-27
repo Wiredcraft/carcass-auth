@@ -7,6 +7,8 @@ cookieParser = require('cookie-parser')
 validValue = carcass.Object.validValue
 
 ###*
+ * Session and cookie.
+ *
  * Just an example.
 ###
 module.exports = (options) ->
@@ -18,6 +20,9 @@ module.exports = (options) ->
     ###
     app = express()
 
+    ###*
+     * Cookie parser.
+    ###
     app.use(cookieParser(options.secret))
 
     ###*

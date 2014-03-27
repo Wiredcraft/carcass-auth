@@ -1,4 +1,4 @@
-var debug, express, http, lib, server;
+var bodyParser, debug, express, http, lib, server;
 
 debug = require('debug')('carcass:server:http');
 
@@ -7,6 +7,8 @@ lib = require('../');
 http = require('http');
 
 express = require('express');
+
+bodyParser = require('body-parser');
 
 
 /**
@@ -52,14 +54,7 @@ server.app = function() {
   app = express();
   config = this.config();
   manager = this.configManager();
-  if ((config != null ? config.dev : void 0) != null) {
-    app.use(express.logger({
-      format: 'dev'
-    }));
-  }
-  app.use(express.json());
-  app.use(express.urlencoded());
+  app.use(bodyParser());
   app.use(lib.applications.session(manager.get('session')));
-  app.use(express.errorHandler());
   return app;
 };

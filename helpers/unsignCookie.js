@@ -7,9 +7,8 @@ carcass = require('carcass');
 validValue = carcass.Object.validValue;
 
 module.exports = function(options) {
-  var secret, unsignCookie;
+  var unsignCookie;
   validValue(options.secret);
-  secret = options.secret;
   return unsignCookie = function(token) {
     var sessionID;
     if (token == null) {
@@ -19,7 +18,7 @@ module.exports = function(options) {
     if (token.indexOf('s:') === 0) {
       token = token.slice(2);
     }
-    sessionID = unsign(token, secret);
+    sessionID = unsign(token, options.secret);
     if (sessionID && sessionID !== token) {
       return sessionID;
     } else {

@@ -27,6 +27,7 @@
     "debug": "0.x"
   },
   "devDependencies": {
+    "body-parser": "latest",
     "carcass-config": "latest",
     "carcass-monitor": "latest",
     "carcass-program": "latest",

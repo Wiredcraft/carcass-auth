@@ -16,6 +16,8 @@ validValue = carcass.Object.validValue;
 
 
 /**
+ * Session and cookie.
+ *
  * Just an example.
  */
 
@@ -28,6 +30,10 @@ module.exports = function(options) {
    * App.
    */
   app = express();
+
+  /**
+   * Cookie parser.
+   */
   app.use(cookieParser(options.secret));
 
   /**

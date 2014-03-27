@@ -7,9 +7,8 @@ carcass = require('carcass');
 validValue = carcass.Object.validValue;
 
 module.exports = function(options) {
-  var cookieBearer, key;
+  var cookieBearer;
   validValue(options.key);
-  key = options.key;
   return cookieBearer = function(req, res, next) {
     var parts, token, _ref, _ref1;
     if (((_ref = req.headers) != null ? _ref.authorization : void 0) != null) {
@@ -26,7 +25,7 @@ module.exports = function(options) {
       if (token.indexOf('s:') !== 0) {
         token = 's:' + token;
       }
-      req.cookies[key] = token;
+      req.cookies[options.key] = token;
     }
     return next();
   };

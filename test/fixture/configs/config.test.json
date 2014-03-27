@@ -5,7 +5,6 @@
         "redis": {}
     },
     "http": {
-        "port": 3210,
-        "dev": true
+        "port": 3210
     }
 }

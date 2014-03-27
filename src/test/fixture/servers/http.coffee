@@ -3,6 +3,7 @@ debug = require('debug')('carcass:server:http')
 lib = require('../')
 http = require('http')
 express = require('express')
+bodyParser = require('body-parser')
 
 ###*
  * HTTP server.
@@ -40,21 +41,10 @@ server.app = ->
     config = @config()
     manager = @configManager()
 
-    # Dev.
-    if config?.dev?
-        app.use(express.logger({
-            format: 'dev'
-        }))
-
     # Basics.
-    app.use(express.json())
-    app.use(express.urlencoded())
+    app.use(bodyParser())
 
     # Just an example.
-    # app.get('/ping', (req, res) -> res.json('pong'))
     app.use(lib.applications.session(manager.get('session')))
-
-    # Error handler.
-    app.use(express.errorHandler())
 
     return app

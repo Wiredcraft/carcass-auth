@@ -5,7 +5,6 @@ validValue = carcass.Object.validValue
 
 module.exports = (options) ->
     validValue(options.key)
-    key = options.key
 
     return cookieBearer = (req, res, next) ->
         # Can be from headers.
@@ -22,6 +21,6 @@ module.exports = (options) ->
             token = decodeURIComponent(token)
             # ..
             token = 's:' + token if token.indexOf('s:') isnt 0
-            # debug('overriding cookie %s with token %s', req.cookies[key], token)
-            req.cookies[key] = token
+            # debug('overriding cookie %s with token %s', req.cookies[options.key], token)
+            req.cookies[options.key] = token
         return next()
