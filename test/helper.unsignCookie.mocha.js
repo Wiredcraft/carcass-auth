@@ -1,9 +1,9 @@
 var debug = require('debug')('carcass:test');
 
 var should = require('should');
-var lib = require('./fixture');
 var path = require('path');
-var dir = path.resolve(__dirname, 'fixture');
+var dir = path.resolve(__dirname, '../example');
+var example = require('../example');
 var Monitor = require('carcass-monitor');
 var supertest = require('supertest');
 
@@ -17,7 +17,7 @@ describe('Helper / unsignCookie:', function() {
     var sid = null;
 
     before(function(done) {
-        lib.reload(done);
+        example.reload(done);
     });
 
     before(function(done) {
@@ -38,7 +38,7 @@ describe('Helper / unsignCookie:', function() {
     });
 
     it('should return a function', function() {
-        unsign = unsignCookie(lib.get('session'));
+        unsign = unsignCookie(example.get('session'));
         unsign.should.be.type('function');
     });
 

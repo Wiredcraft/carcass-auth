@@ -2,7 +2,7 @@ var debug = require('debug')('carcass:test');
 
 // var should = require('should');
 var path = require('path');
-var dir = path.resolve(__dirname, 'fixture');
+var dir = path.resolve(__dirname, '../example');
 var Monitor = require('carcass-monitor');
 var supertest = require('supertest');
 

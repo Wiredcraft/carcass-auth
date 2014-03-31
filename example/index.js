@@ -1,6 +1,6 @@
 var auth, carcass, config, extend, lib, name, path, program, _i, _len, _ref;
 
-auth = require('../../');
+auth = require('../');
 
 carcass = require('carcass');
 
@@ -16,12 +16,6 @@ lib.mixin(carcass.proto.register);
 
 lib.mixin(config.proto.manager);
 
-_ref = ['applications', 'servers'];
-for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-  name = _ref[_i];
-  lib.register(__dirname, name);
-}
-
 lib.classes = {};
 
 lib.helpers = {};
@@ -33,6 +27,12 @@ extend(lib.classes, program.classes);
 extend(lib.helpers, auth.helpers);
 
 extend(lib.middlewares, auth.middlewares);
+
+_ref = ['applications', 'servers'];
+for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+  name = _ref[_i];
+  lib.register(__dirname, name);
+}
 
 path = require('path');
 
