@@ -26,7 +26,8 @@
   "dependencies": {
     "carcass": ">=0.10.1",
     "cookie-signature": "1.x",
-    "debug": "0.x"
+    "debug": "*",
+    "qs": "0.x"
   },
   "devDependencies": {
     "body-parser": "latest",
