@@ -7,11 +7,11 @@ var example = require('../example');
 var Monitor = require('carcass-monitor');
 var supertest = require('supertest');
 
-var unsignCookie = require('../helpers/unsignCookie');
+var decodeSID = require('../helpers/decodeSID');
 
-describe('Helper / unsignCookie:', function() {
+describe('Helper / decodeSID:', function() {
 
-    var unsign = null;
+    var decode = null;
     var request = supertest('http://127.0.0.1:3210');
     var monitor = new Monitor();
     var sid = null;
@@ -34,12 +34,12 @@ describe('Helper / unsignCookie:', function() {
     });
 
     it('should be a function', function() {
-        unsignCookie.should.be.type('function');
+        decodeSID.should.be.type('function');
     });
 
     it('should return a function', function() {
-        unsign = unsignCookie(example.get('session'));
-        unsign.should.be.type('function');
+        decode = decodeSID(example.get('session'));
+        decode.should.be.type('function');
     });
 
     it('prepare a sid', function(done) {
@@ -55,34 +55,34 @@ describe('Helper / unsignCookie:', function() {
             });
     });
 
-    it('should unsign a sid', function() {
-        var sessionID = unsign(sid);
+    it('should decode a sid', function() {
+        var sessionID = decode(sid);
         sessionID.should.be.type('string');
     });
 
-    it('should unsign a sid', function() {
-        var sessionID = unsign('s:' + sid);
+    it('should decode a sid', function() {
+        var sessionID = decode('s:' + sid);
         sessionID.should.be.type('string');
     });
 
-    it('should not unsign nothing', function() {
-        var sessionID = unsign();
+    it('should not decode nothing', function() {
+        var sessionID = decode();
         should.not.exist(sessionID);
     });
 
-    it('should not unsign a wrong sid', function() {
-        var sessionID = unsign('lorem:' + sid);
+    it('should not decode a wrong sid', function() {
+        var sessionID = decode('lorem:' + sid);
         should.not.exist(sessionID);
     });
 
-    it('should not unsign a wrong sid', function() {
-        var sessionID = unsign(sid.slice(0, -1));
+    it('should not decode a wrong sid', function() {
+        var sessionID = decode(sid.slice(0, -1));
         should.not.exist(sessionID);
     });
 
-    it('should not unsign a result', function() {
-        var sessionID = unsign(sid);
-        sessionID = unsign(sessionID);
+    it('should not decode a result', function() {
+        var sessionID = decode(sid);
+        sessionID = decode(sessionID);
         should.not.exist(sessionID);
     });
 

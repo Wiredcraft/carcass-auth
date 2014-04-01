@@ -2,10 +2,18 @@ unsign = require('cookie-signature').unsign
 carcass = require('carcass')
 validValue = carcass.Object.validValue
 
+###*
+ * @return {Function} the helper.
+###
 module.exports = (options) ->
     validValue(options.secret)
 
-    return unsignCookie = (token) ->
+    ###*
+     * Just a helper.
+     *
+     * @return {String} the unsigned session ID.
+    ###
+    return decodeSID = (token) ->
         return if not token?
         # It is usually encoded.
         token = decodeURIComponent(token)

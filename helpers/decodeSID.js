@@ -6,10 +6,21 @@ carcass = require('carcass');
 
 validValue = carcass.Object.validValue;
 
+
+/**
+ * @return {Function} the helper.
+ */
+
 module.exports = function(options) {
-  var unsignCookie;
+  var decodeSID;
   validValue(options.secret);
-  return unsignCookie = function(token) {
+
+  /**
+   * Just a helper.
+   *
+   * @return {String} the unsigned session ID.
+   */
+  return decodeSID = function(token) {
     var sessionID;
     if (token == null) {
       return;
