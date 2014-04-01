@@ -1,4 +1,13 @@
 
+0.2.0 / 2014-04-01
+==================
+
+ * Added helpers/appendQS.
+ * Renamed helpers/unsignCookie to helpers/decodeSID.
+ * Moved to Wiredcraft.
+ * Moved examples to /example.
+ * Minor changes to coding styles and the test server.
+
 0.1.0 / 2014-03-27
 ==================
 
