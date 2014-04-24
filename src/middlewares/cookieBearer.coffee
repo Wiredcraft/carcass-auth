@@ -1,7 +1,7 @@
 debug = require('debug')('carcass:middleware:cookieBearer')
 
 carcass = require('carcass')
-validValue = carcass.Object.validValue
+validValue = carcass.object.validValue
 
 module.exports = (options) ->
     validValue(options.key)

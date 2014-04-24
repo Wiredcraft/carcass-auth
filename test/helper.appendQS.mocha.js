@@ -1,7 +1,6 @@
 // var debug = require('debug')('carcass:test');
 
 var should = require('should');
-var example = require('../example');
 
 var appendQS = require('../helpers/appendQS');
 

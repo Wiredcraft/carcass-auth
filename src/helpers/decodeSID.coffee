@@ -1,6 +1,6 @@
 unsign = require('cookie-signature').unsign
 carcass = require('carcass')
-validValue = carcass.Object.validValue
+validValue = carcass.object.validValue
 
 ###*
  * @return {Function} the helper.

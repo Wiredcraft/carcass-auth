@@ -2,7 +2,6 @@ auth = require('../')
 carcass = require('carcass')
 config = require('carcass-config')
 program = require('carcass-program')
-extend = carcass.Object.extendProperties
 
 # The lib.
 module.exports = lib = carcass.mixable()
@@ -10,12 +9,8 @@ lib.mixin(carcass.proto.register)
 lib.mixin(config.proto.manager)
 
 # Integrate.
-lib.classes = {}
-lib.helpers = {}
-lib.middlewares = {}
-extend(lib.classes, program.classes)
-extend(lib.helpers, auth.helpers)
-extend(lib.middlewares, auth.middlewares)
+lib.extend(program, 'classes')
+lib.extend(auth, 'helpers', 'middlewares')
 
 # Register.
 lib.register(__dirname, name) for name in ['applications', 'servers']

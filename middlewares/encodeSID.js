@@ -4,7 +4,7 @@ carcass = require('carcass');
 
 sign = require('cookie-signature').sign;
 
-validValue = carcass.Object.validValue;
+validValue = carcass.object.validValue;
 
 module.exports = function(options) {
   var encodeSID;

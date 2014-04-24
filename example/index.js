@@ -1,4 +1,4 @@
-var auth, carcass, config, extend, lib, name, path, program, _i, _len, _ref;
+var auth, carcass, config, lib, name, path, program, _i, _len, _ref;
 
 auth = require('../');
 
@@ -8,25 +8,15 @@ config = require('carcass-config');
 
 program = require('carcass-program');
 
-extend = carcass.Object.extendProperties;
-
 module.exports = lib = carcass.mixable();
 
 lib.mixin(carcass.proto.register);
 
 lib.mixin(config.proto.manager);
 
-lib.classes = {};
+lib.extend(program, 'classes');
 
-lib.helpers = {};
-
-lib.middlewares = {};
-
-extend(lib.classes, program.classes);
-
-extend(lib.helpers, auth.helpers);
-
-extend(lib.middlewares, auth.middlewares);
+lib.extend(auth, 'helpers', 'middlewares');
 
 _ref = ['applications', 'servers'];
 for (_i = 0, _len = _ref.length; _i < _len; _i++) {

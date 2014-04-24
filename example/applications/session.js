@@ -12,7 +12,7 @@ RedisStore = require('connect-redis')(session);
 
 cookieParser = require('cookie-parser');
 
-validValue = carcass.Object.validValue;
+validValue = carcass.object.validValue;
 
 
 /**
