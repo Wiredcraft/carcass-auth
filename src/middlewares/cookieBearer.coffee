@@ -16,11 +16,15 @@ module.exports = (options) ->
         # Can be from body.
         # TODO
         # Override cookie.
+        name = options.name
         if token?
             # It's usually encoded.
             token = decodeURIComponent(token)
             # ..
             token = 's:' + token if token.indexOf('s:') isnt 0
-            # debug('overriding cookie %s with token %s', req.cookies[options.name], token)
-            req.cookies[options.name] = token
+            # debug('overriding cookie %s with token %s', req.cookies[name], token)
+            req.cookies[name] = token
+            # Delete cookie so that the token will be used.
+            if req.signedCookies? and req.signedCookies[name]?
+                delete req.signedCookies[name]
         return next()

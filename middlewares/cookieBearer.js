@@ -10,7 +10,7 @@ module.exports = function(options) {
   var cookieBearer;
   validValue(options.name);
   return cookieBearer = function(req, res, next) {
-    var parts, token, _ref, _ref1;
+    var name, parts, token, _ref, _ref1;
     if (((_ref = req.headers) != null ? _ref.authorization : void 0) != null) {
       parts = req.headers.authorization.split(' ');
       if (parts.length === 2 && /^Bearer|Token$/i.test(parts[0])) {
@@ -20,12 +20,16 @@ module.exports = function(options) {
     if ((token == null) && (((_ref1 = req.query) != null ? _ref1.access_token : void 0) != null)) {
       token = req.query.access_token;
     }
+    name = options.name;
     if (token != null) {
       token = decodeURIComponent(token);
       if (token.indexOf('s:') !== 0) {
         token = 's:' + token;
       }
-      req.cookies[options.name] = token;
+      req.cookies[name] = token;
+      if ((req.signedCookies != null) && (req.signedCookies[name] != null)) {
+        delete req.signedCookies[name];
+      }
     }
     return next();
   };
