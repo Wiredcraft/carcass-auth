@@ -4,7 +4,7 @@ carcass = require('carcass')
 validValue = carcass.object.validValue
 
 module.exports = (options) ->
-    validValue(options.key)
+    validValue(options.name)
 
     return cookieBearer = (req, res, next) ->
         # Can be from headers.
@@ -15,12 +15,12 @@ module.exports = (options) ->
         token = req.query.access_token if not token? and req.query?.access_token?
         # Can be from body.
         # TODO
-        # Override token from cookie.
+        # Override cookie.
         if token?
             # It's usually encoded.
             token = decodeURIComponent(token)
             # ..
             token = 's:' + token if token.indexOf('s:') isnt 0
-            # debug('overriding cookie %s with token %s', req.cookies[options.key], token)
-            req.cookies[options.key] = token
+            # debug('overriding cookie %s with token %s', req.cookies[options.name], token)
+            req.cookies[options.name] = token
         return next()

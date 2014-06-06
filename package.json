@@ -24,9 +24,9 @@
   },
   "homepage": "https://github.com/Wiredcraft/carcass-auth",
   "dependencies": {
-    "carcass": "~0.11.0",
+    "carcass": "0.11.4",
     "cookie-signature": "1.x",
-    "debug": "*",
+    "debug": "1.x",
     "qs": "0.x"
   },
   "devDependencies": {

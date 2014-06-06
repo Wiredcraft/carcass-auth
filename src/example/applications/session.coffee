@@ -12,7 +12,7 @@ validValue = carcass.object.validValue
  * Just an example.
 ###
 module.exports = (options) ->
-    validValue(options.key)
+    validValue(options.name)
     validValue(options.secret)
 
     ###*
@@ -33,7 +33,7 @@ module.exports = (options) ->
     app.use(lib.middlewares.cookieBearer(options))
 
     app.use(session({
-        key: options.key
+        name: options.name
         store: new RedisStore(options.redis ? {}),
         secret: options.secret
         cookie: {

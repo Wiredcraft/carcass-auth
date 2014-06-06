@@ -23,7 +23,7 @@ validValue = carcass.object.validValue;
 
 module.exports = function(options) {
   var app, _ref;
-  validValue(options.key);
+  validValue(options.name);
   validValue(options.secret);
 
   /**
@@ -43,7 +43,7 @@ module.exports = function(options) {
    */
   app.use(lib.middlewares.cookieBearer(options));
   app.use(session({
-    key: options.key,
+    name: options.name,
     store: new RedisStore((_ref = options.redis) != null ? _ref : {}),
     secret: options.secret,
     cookie: {
