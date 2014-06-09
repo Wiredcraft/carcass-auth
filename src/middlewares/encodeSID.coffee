@@ -1,11 +1,8 @@
-carcass = require('carcass')
-sign = require('cookie-signature').sign
-validValue = carcass.object.validValue
+lib = require('../')
 
 module.exports = (options) ->
-    validValue(options.secret)
+    helper = lib.helpers.encodeSID(options)
 
     return encodeSID = (req, res, next) ->
-        if (req.sessionID)
-            req.encodedSID = encodeURIComponent(sign(req.sessionID, options.secret))
+        req.encodedSID = helper(req.sessionID) if (req.sessionID)
         next()

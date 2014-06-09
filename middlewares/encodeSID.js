@@ -1,17 +1,13 @@
-var carcass, sign, validValue;
+var lib;
 
-carcass = require('carcass');
-
-sign = require('cookie-signature').sign;
-
-validValue = carcass.object.validValue;
+lib = require('../');
 
 module.exports = function(options) {
-  var encodeSID;
-  validValue(options.secret);
+  var encodeSID, helper;
+  helper = lib.helpers.encodeSID(options);
   return encodeSID = function(req, res, next) {
     if (req.sessionID) {
-      req.encodedSID = encodeURIComponent(sign(req.sessionID, options.secret));
+      req.encodedSID = helper(req.sessionID);
     }
     return next();
   };
