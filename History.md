@@ -1,4 +1,11 @@
 
+0.4.0 / 2014-06-09
+==================
+
+ * Added encodeSID() helper and use it in the encodeSID middleware.
+ * Improved cookieBearer middleware, to really override cookie.
+ * Express session changed an option: key -> name.
+
 0.3.0 / 2014-04-24
 ==================
 
