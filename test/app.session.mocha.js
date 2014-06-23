@@ -177,6 +177,7 @@ describe('App / session:', function() {
             .expect(200)
             .expect('set-cookie', /sid/)
             .end(function(err, res) {
+                jar.setCookies('lorem=true');
                 jar.setCookies(res.headers['set-cookie']);
                 cookies = jar.getCookies(access).toValueString();
                 done();

@@ -22,8 +22,10 @@ module.exports = (options) ->
 
     ###*
      * Cookie parser.
+     *
+     * Usually useful but not required.
     ###
-    app.use(cookieParser(options.secret))
+    # app.use(cookieParser(options.secret))
 
     ###*
      * HTTP bearer can be used to override session id from cookie. API requests
