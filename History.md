@@ -1,4 +1,9 @@
 
+0.4.1 / 2014-06-23
+==================
+
+ * Support express-session >= 1.5 which doesn't require cookie-parser anymore.
+
 0.4.0 / 2014-06-09
 ==================
 
